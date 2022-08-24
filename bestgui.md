@@ -19,7 +19,7 @@ layout = [
 app.configure(layout)
 app.start()
 
-```python
+```
 Got it? Save this and run it. Did you notice that unlike TKinter or Kivy or PyQt, you can highlight it?  
 And much, much more.  
 So, let's explain the code:  
