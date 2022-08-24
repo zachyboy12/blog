@@ -22,7 +22,7 @@ Then create another file named test.py:
 $ touch test.py
 ```  
 Now, let's open the file editor of your choice, code in test.py, and then explain.  
-```
+```python
 from wsgiref.simple_server import make_server
 
 def app(environ, start_response):
@@ -42,7 +42,7 @@ parameter and a headers parameter.
 make_server makes a simple WSGI server that serves on HOST:PORT and only serves one WSGI app, as mentioned.  
 After this, delete everything in test.py.  
 Now, relocate to __init__.py and convert this to a class, since it is much more convenient that way:  
-```
+```python
 class API:  # or whatever you want
   def app(self, request, response):
     response("200 OK", [])
@@ -50,7 +50,7 @@ class API:  # or whatever you want
 ```  
 Note: I changed environ to request, and start_response to just response.  
 Now, to run this, write this code in test.py, and go to [http://localhost:8000](http://localhost:8000):  
-```
+```python
 from __init__ import API
 from wsgiref.simple_server import make_server
 api = API()
@@ -63,7 +63,7 @@ Let's explain first, then code.
 So, in the request dictionary, there is a key called PATH_INFO, which is the requested path. You can  
 play around with this.  
 Let's do this!  
-```
+```python
 class API:  # or whatever you want
   def app(self, request, response):
     response("200 OK", [])
@@ -76,7 +76,7 @@ So how are we going to let the user route custom routes with custom handlers? Si
 Our plan is to use a Python dictionary; The key for the route and the value for the handler.  
 Over here, we are going to use a decorator to route, and create a runserver function.  
 The handler is gonna have a request param.  
-```
+```python
 class API:  # or whatever you want
   def __init__(self):
     self.routes = None
@@ -108,7 +108,7 @@ class API:  # or whatever you want
       server.shutdown()
 ```  
 Awesome. Now delete everything inside test.py and add the following:  
-```
+```python
 from __init__ import API
 api = API()
 @api.route('/')
@@ -118,7 +118,7 @@ api.runserver()
 ```  
 Does this seem familiar? Yes, it's Flask! Let's make this a little more  
 original by adding a class called HTTPResponse:  
-```
+```python
 class HTTPResponse:
   def __init__(self, body):
     self.body = body
@@ -156,7 +156,7 @@ class API:  # or whatever you want
 Once again, it is quite simple: we simply made a simple class called HTTPResponse,  
 and added .body after calling the handler in the route() method.  
 After this, we should delete everything from test.py and replace it with:  
-```
+```python
 from __init__ import API, HTTPResponse
 api = API()
 @api.route('/')
@@ -168,7 +168,7 @@ Now, before we do this, please read this one chapter: [environ Variables](https:
 So, as you recall, there are variables called CONTENT_TYPE, SERVER_PROTOCOL, and CONTENT_LENGTH.  
 Let's add these attributes to the HTTPResponse class, and change this app() class so as to  
 change the CONTENT_TYPE, SERVER_PROTOCOL, and CONTENT_LENGTH variables.  
-```
+```python
 class HTTPResponse:
   def __init__(self, body, content_type='text/html', HTTP_version='HTTP/1.1', charset='utf-8'):
     self.body = body
@@ -210,7 +210,7 @@ class API:  # or whatever you want
       server.shutdown()
 ```  
 Next, go to test.py and add the following:  
-```
+```python
 from __init__ import API, HTTPResponse
 api = API()
 @api.route('/')
