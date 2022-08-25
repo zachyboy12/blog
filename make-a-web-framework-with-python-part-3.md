@@ -14,7 +14,7 @@ This part will have less features and we will do:
 
 Right now, our framework lets us route a path multiple times. Of course,  
 this is unacceptable. We must raise an error. This is very simple:  
-```
+```python
 ...
 def connect_route(self, route: str):
     def wrapper(app):
@@ -29,7 +29,7 @@ def connect_route(self, route: str):
 ...
 ```  
 Ok. Now let's make a Template engine. I named mine Templater:  
-```
+```python
 ...
 class Templater:
     def __init__(self, filepath):
@@ -38,7 +38,7 @@ class Templater:
 ```  
 Cool, right? Now let's add some methods.  
 The first method we are gonna do is to render values to the file, and to do this we are gonna use a dictionary:  
-```
+```python
 class Templater:
     def __init__(self, filepath):
         self.__file = filepath  # Making variable private (two underscores at the beginning)
@@ -54,7 +54,7 @@ Simple, wasn't it? We simply iterated over names_and_values, made new_contents e
 original file contents, and replaced the beginning tag plus the key plus the end tag with the value of  
 the key in the dictionary. Finally, we opened the file and wrote new_contents to the file.  
 Ok, so now we got this method, now let's add a for loop method:  
-```
+```python
 class Templater:
     def __init__(self, filepath):
         self.__file = filepath  # Making variable private (two underscores at the beginning)
