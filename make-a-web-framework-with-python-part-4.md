@@ -10,7 +10,7 @@ In part 4, we will add one feature:
 - Making our own database manager for our framework
 
 Now, let's create a class called Database:  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -30,7 +30,7 @@ space, and inside this you append the column to the current line. After looping 
 We append the current line to self.__database, and finally we reset current_line to an empty list.  
 Whew! Now that we got this, let's make a get_row and a get_column method to get the rows in the  
 database and to get the columns in a row in the database:  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -51,7 +51,7 @@ class Database:
 Great job!  
 For an exercise, make some methods to add rows and columns.  
 Done? Here's the solution:  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -76,7 +76,7 @@ class Database:
     self.__database[row - 1].insert(column - 1, column_value)
 ```  
 Ok, let's make some handy methods to remove either a row or a column:  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -109,7 +109,7 @@ class Database:
 After we do that, let's discuss.  
 What if you want to get the unsaved changes, as a string?  
 Let's do just that!  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -148,7 +148,7 @@ class Database:
 Wouldn't it be easier to just call a method to get the current contents of the database,  
 instead of having to do the built-in open function all over again?  
 We will do this:  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
@@ -238,7 +238,7 @@ Now, our last method will be save_changes: To save the unsaved changes to the da
 Let's discuss and then do.  
 So, our plan is to loop through self.__database, and inside the loop we will join it to the  
 contents to add.  
-```
+```python
 class Database:
   def __init__(self, database_file):
         self.__database = []
