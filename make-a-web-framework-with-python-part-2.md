@@ -15,7 +15,7 @@ In this second part, we are going to do:
 
 Let's dive in!  
 So, let's remember our original code in __init__.py:  
-```
+```python
 class HTTPResponse:
   def __init__(self, body, content_type='text/html', HTTP_version='HTTP/1.1', charset='utf-8'):
     self.body = body
@@ -57,7 +57,7 @@ class API:  # or whatever you want
       server.shutdown()
 ```  
 Let's remember the file contents of test.py:  
-```
+```python
 from __init__ import API, HTTPResponse
 api = API()
 @api.route('/')
@@ -71,7 +71,7 @@ Let's make our framework handle things gracefully.
 Explain first and then do.  
 So, we are gonna create two functions: one is the default exception handler, and  
 another is for configuring an exception handler.  
-```
+```python
 class HTTPResponse:
   def __init__(self, body, content_type='text/html', HTTP_version='HTTP/1.1', charset='utf-8'):
     self.body = body
@@ -122,7 +122,7 @@ class API:  # or whatever you want
 ```  
 Simple, wasn't it?  
 Ok, now let's actually use it:  
-```
+```python
 class HTTPResponse:
   def __init__(self, body, content_type='text/html', HTTP_version='HTTP/1.1', charset='utf-8'):
     self.body = body
@@ -183,7 +183,7 @@ Now, here's an exercise for you:
 Add a 404 handler function, a 404 handler configure function, and refractor  
 app() to catch a 404 not found error (Hint: except KeyError:).  
 You did it? Ok. Here's the solution:  
-```
+```python
 class HTTPResponse:
   def __init__(self, body, content_type='text/html', HTTP_version='HTTP/1.1', charset='utf-8'):
     self.body = body
@@ -268,7 +268,7 @@ def connect_route(self, route: str):
 ```  
 Hey, isn't this the same code in route()?  
 Let's follow the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle and do this:  
-```
+```python
 ...
 def route(self, route: str):
     def wrapper(app):
